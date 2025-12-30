@@ -1,5 +1,6 @@
 import argparse
 from pathlib import Path
+import joblib
 
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -29,6 +30,8 @@ def main(test_size: float, random_state: int):
 
     output_dir = Path("outputs")
     output_dir.mkdir(exist_ok=True)
+
+    joblib.dump(model, output_dir / "model.joblib")
 
     plt.figure(figsize=(6, 4))
     sns.heatmap(
